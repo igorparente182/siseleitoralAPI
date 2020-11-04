@@ -17,6 +17,10 @@ namespace siseleitoralAPI.Repositories
         }
         public List<ConsultaGeral> GetConsultaGerals(string value)
         {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return _context.ConsultaGerals.ToList();
+            }
             return _context.ConsultaGerals.Where(c => c.Bairro.ToUpper().Contains(value.ToUpper())
             || c.CEP.ToUpper().Contains(value.ToUpper())
             || c.CodLoc.ToString().ToUpper().Contains(value.ToUpper())
