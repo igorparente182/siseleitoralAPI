@@ -29,10 +29,10 @@ namespace siseleitoralAPI.Repositories
             || c.Endereco.ToUpper().Contains(value.ToUpper())
             || c.Local.ToUpper().Contains(value.ToUpper())
             || c.Nome.ToUpper().Contains(value.ToUpper())
-            || c.Regional.ToString().ToUpper().Contains(value.ToUpper())
+            || c.Zonal.ToUpper().Contains(value.ToUpper())
             || c.Secoes_Total.ToString().ToUpper().Contains(value.ToUpper())
             || c.Zona.ToString().ToUpper().Contains(value.ToUpper())
-            ).ToList();
+            ).OrderBy(c=> new { c.Local,c.Tipo,c.Nome}). ToList();
         }
     }
 }

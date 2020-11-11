@@ -16,7 +16,7 @@ namespace siseleitoralAPI.Models
 
         public string Contato { get; set; }
 
-        public int Regional { get; set; }
+        public string Zonal { get; set; }
 
         public int Zona { get; set; }
 
