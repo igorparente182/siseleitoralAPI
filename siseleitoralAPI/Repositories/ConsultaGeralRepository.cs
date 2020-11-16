@@ -1,4 +1,5 @@
-﻿using siseleitoralAPI.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using siseleitoralAPI.Context;
 using siseleitoralAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,19 @@ namespace siseleitoralAPI.Repositories
         {
             _context = context;
         }
-        public List<ConsultaGeral> GetConsultaGerals(string value)
+        public async Task<List<ConsultaGeral>> GetConsultaGerals(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return _context.ConsultaGerals.ToList();
+                return await _context.ConsultaGerals.ToListAsync();
             }
-            return _context.ConsultaGerals.ToList();
+            return await _context.ConsultaGerals.ToListAsync();
         }
+
+        public async Task<List<ConsultaGeral>> GetConsultasContato(int zona, int codMun, int codLoc)
+        {
+            return await _context.ConsultaGerals.Where(c => c.Zona == zona && c.CodMun == codMun && c.CodLoc==codLoc).ToListAsync();
+        }
+
     }
 }

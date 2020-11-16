@@ -8,6 +8,8 @@ namespace siseleitoralAPI.Services
 {
     public interface IConsultaGeralService
     {
-        public GenericResult GetConsultaGerals(string value);
+        public Task<GenericResult> GetConsultaGerals(string value);
+
+        public Task<GenericResult> GetConsultasContato(int zona, int codMun, int codLoc);
     }
 }

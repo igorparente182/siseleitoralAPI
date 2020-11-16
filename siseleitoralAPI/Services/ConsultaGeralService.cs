@@ -16,13 +16,13 @@ namespace siseleitoralAPI.Services
         {
             _consultaGeral = consultaGeral;
         }
-        public GenericResult GetConsultaGerals(string value)
+        public async Task<GenericResult> GetConsultaGerals(string value)
         {
             var result = new GenericResult();
 
             try
             {                
-                var list = _consultaGeral.GetConsultaGerals(value);
+                var list = await _consultaGeral.GetConsultaGerals(value);
                 if (list != null && list.Count>0)
                 {
                     result.Data = list;
@@ -44,5 +44,33 @@ namespace siseleitoralAPI.Services
             }
         }
 
+        public async Task<GenericResult> GetConsultasContato(int zona, int codMun, int codLoc)
+        {
+            var result = new GenericResult();
+
+            try
+            {
+                var list = await _consultaGeral.GetConsultasContato(zona,codMun,codLoc);
+                if (list != null && list.Count > 0)
+                {
+                    result.Data = list;
+                    result.Success = true;
+                    result.Menssage = "Sucesso";
+                    return result;
+                }
+                result.Data = null;
+                result.Success = false;
+                result.Menssage = "Não foi encontrado nenhum resultado";
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                result.Data = null;
+                result.Success = false;
+                result.Menssage = "Erro de " + e.Message;
+                return result;
+            }
+        }
     }
 }

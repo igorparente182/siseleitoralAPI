@@ -8,6 +8,8 @@ namespace siseleitoralAPI.Repositories
 {
     public interface IConsultaGeralRepository
     {
-        public List<ConsultaGeral> GetConsultaGerals(string value);
+        public Task<List<ConsultaGeral>> GetConsultaGerals(string value);
+
+        public Task<List<ConsultaGeral>> GetConsultasContato(int zona, int codMun, int codLoc);
     }
 }

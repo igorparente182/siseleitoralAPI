@@ -22,6 +22,10 @@ namespace siseleitoralAPI.Models
 
         public int CodLoc { get; set; }
 
+        public int CodMun { get; set; }
+
+        public string Municipio { get; set; }
+
         public string Bairro { get; set; }
 
         public string Local { get; set; }

@@ -20,9 +20,17 @@ namespace siseleitoralAPI.Controllers
         }
 
         [HttpGet]
-        public JsonResult Index(string value)
+        [Route("ConsultaGerals")]
+        public async Task<JsonResult> Index(string value)
         {
-            return Json(_consultaGeralService.GetConsultaGerals(value));
+            return Json( await _consultaGeralService.GetConsultaGerals(value));
+        }
+
+        [HttpGet]
+        [Route("ConsultasContato")]
+        public async Task<JsonResult> Index(int zona, int codMun, int codLoc)
+        {
+            return Json(await _consultaGeralService.GetConsultasContato(zona,codMun,codLoc));
         }
     }
 }
