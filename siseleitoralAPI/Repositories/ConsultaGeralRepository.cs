@@ -21,18 +21,7 @@ namespace siseleitoralAPI.Repositories
             {
                 return _context.ConsultaGerals.ToList();
             }
-            return _context.ConsultaGerals.Where(c => c.Bairro.ToUpper().Contains(value.ToUpper())
-            || c.CEP.ToUpper().Contains(value.ToUpper())
-            || c.CodLoc.ToString().ToUpper().Contains(value.ToUpper())
-            || c.Contato.ToUpper().Contains(value.ToUpper())
-            || c.Eleitores.ToString().ToUpper().Contains(value.ToUpper())
-            || c.Endereco.ToUpper().Contains(value.ToUpper())
-            || c.Local.ToUpper().Contains(value.ToUpper())
-            || c.Nome.ToUpper().Contains(value.ToUpper())
-            || c.Zonal.ToUpper().Contains(value.ToUpper())
-            || c.Secoes_Total.ToString().ToUpper().Contains(value.ToUpper())
-            || c.Zona.ToString().ToUpper().Contains(value.ToUpper())
-            ).OrderBy(c=> new { c.Local,c.Tipo,c.Nome}). ToList();
+            return _context.ConsultaGerals.ToList();
         }
     }
 }
